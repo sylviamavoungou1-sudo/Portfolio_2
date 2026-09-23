@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>CV - MAVOUNGOU Sylvia</title>
+<!-- source du CV : ouvrir dans le navigateur puis Imprimer > Enregistrer en PDF (A4, sans marges) -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+
+  :root {
+    --beige: #c0a899;
+    --brun: #4a2c21;
+    --texte: #3b2a24;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 210mm;
+    height: 297mm;
+  }
+
+  body {
+    font-family: 'Poppins', Arial, sans-serif;
+    color: var(--texte);
+    background: white;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    overflow: hidden;
+  }
+
+  /* ===== bandeau du haut ===== */
+  header {
+    background: var(--beige);
+    padding: 7mm 12mm 7mm;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 34pt;
+    font-weight: 800;
+    color: var(--brun);
+    line-height: 1.1;
+    margin-bottom: 3mm;
+  }
+
+  .accroche {
+    font-style: italic;
+    font-size: 10.5pt;
+    line-height: 1.45;
+    color: var(--texte);
+  }
+
+  /* ===== deux colonnes ===== */
+  .colonnes {
+    display: flex;
+    height: calc(297mm - 58mm);
+  }
+
+  aside {
+    width: 72mm;
+    background: var(--beige);
+    border-radius: 0 0 36mm 36mm;
+    padding: 6mm 5mm 0 7mm;
+    margin-top: 3mm;
+    height: calc(100% - 6mm);
+  }
+
+  main {
+    flex: 1;
+    padding: 6mm 9mm 0 7mm;
+  }
+
+  h2 {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--brun);
+    text-transform: uppercase;
+    margin-bottom: 2.5mm;
+  }
+
+  main h2 {
+    font-size: 15pt;
+    margin-bottom: 3mm;
+  }
+
+  section { margin-bottom: 6mm; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* coordonnees avec leurs logos, tous de la meme couleur */
+  .contact {
+    list-style: none;
+    font-size: 8.5pt;
+  }
+
+  .contact li {
+    display: flex;
+    align-items: center;
+    gap: 3.5mm;
+    margin-bottom: 3.2mm;
+    word-break: break-all;
+  }
+
+  .contact svg {
+    width: 5mm;
+    height: 5mm;
+    flex: 0 0 5mm;
+    fill: var(--brun);
+  }
+
+  .liste {
+    font-size: 9pt;
+    line-height: 1.55;
+    padding-left: 4.5mm;
+  }
+
+  .liste li { margin-bottom: 0.6mm; }
+  .liste li::marker { color: var(--brun); }
+
+  .simple {
+    list-style: none;
+    font-size: 9pt;
+    line-height: 1.7;
+  }
+
+  /* colonne de droite */
+  .projets {
+    font-size: 9.5pt;
+    line-height: 1.4;
+    padding-left: 4.5mm;
+  }
+
+  .projets li { margin-bottom: 2.6mm; }
+
+  .techniques {
+    list-style: none;
+    font-size: 9pt;
+    line-height: 1.45;
+  }
+
+  .techniques li {
+    display: grid;
+    grid-template-columns: 31mm 1fr;
+    margin-bottom: 1.3mm;
+  }
+
+  .techniques b {
+    font-weight: 600;
+    color: var(--brun);
+  }
+
+  .formation {
+    font-size: 9pt;
+    line-height: 1.4;
+    margin-bottom: 3mm;
+  }
+
+  .formation .titre {
+    font-weight: 700;
+    color: #a88d7d;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>MAVOUNGOU Sylvia</h1>
+  <p class="accroche">Étudiante en 2<sup>e</sup> année de BUT Informatique, parcours Réalisation d'applications : conception, développement, validation, je recherche un stage à partir du 29 mars 2027. Je souhaite approfondir mes compétences en programmation, acquérir une première expérience professionnelle et mettre en pratique mes connaissances à travers la conception et la réalisation de projets informatiques concrets.</p>
+</header>
+
+<div class="colonnes">
+
+  <aside>
+    <section>
+      <h2>Coordonnées</h2>
+      <ul class="contact">
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          +33 7 53 80 75 10
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M2 5h20v14H2V5zm2 2v.5l8 5 8-5V7l-8 5-8-5z"/></svg>
+          sylviamavoungou1@gmail.com
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M12 3 2 11h3v10h5v-6h4v6h5V11h3L12 3z"/></svg>
+          7 ter rue Favorin
+        </li>
+        <li>
+          <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+          <a href="https://github.com/sylviamavoungou1-sudo">sylviamavoungou1-sudo</a>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Langues</h2>
+      <ul class="simple">
+        <li>Français : langue maternelle</li>
+        <li>Anglais : niveau A2</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Savoir-être</h2>
+      <ul class="liste">
+        <li>Autonomie</li>
+        <li>Rigueur</li>
+        <li>Travail en équipe</li>
+        <li>Gestion du temps</li>
+        <li>Adaptabilité</li>
+        <li>Sens de l'organisation</li>
+        <li>Capacité d'apprentissage</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Centres d'intérêt</h2>
+      <ul class="simple">
+        <li>Cybersécurité</li>
+        <li>Lecture</li>
+        <li>Randonnée</li>
+        <li>Voyages</li>
+      </ul>
+    </section>
+  </aside>
+
+  <main>
+    <section>
+      <h2>Projets académiques</h2>
+      <ul class="projets">
+        <li>Application de gestion de recettes de cuisine avec interface graphique : C++, Qt, JSON et XML</li>
+        <li>Développement d'un site web pour les journées portes ouvertes de l'IUT : HTML, CSS, Bootstrap</li>
+        <li>Configuration d'un serveur mail : Linux (Debian), Postfix</li>
+        <li>Installation et configuration d'un poste informatique : VirtualBox, Debian 13 et Windows 11</li>
+        <li>Création d'une base de données : modélisation MCD/MLD, SQL, PostgreSQL</li>
+        <li>Programmation orientée objet en Java et en C++ (médiathèque, calculatrice de polynômes)</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Compétences techniques</h2>
+      <ul class="techniques">
+        <li><b>Langages</b><span>C++, Java, JavaScript, Python, SQL, Bash</span></li>
+        <li><b>Web</b><span>HTML5, CSS3, Bootstrap</span></li>
+        <li><b>Frameworks</b><span>Qt</span></li>
+        <li><b>Méthodes</b><span>Programmation orientée objet (POO), modélisation de bases de données (MCD/MLD), tests automatisés</span></li>
+        <li><b>Outils</b><span>Git, GitHub, Make, CMake, Doxygen, VS Code</span></li>
+        <li><b>Systèmes</b><span>Linux / Unix (Debian), Windows 11, VirtualBox, Postfix</span></li>
+        <li><b>Bases de données</b><span>PostgreSQL</span></li>
+        <li><b>Formats</b><span>JSON, XML</span></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Formation</h2>
+      <div class="formation">
+        <p class="titre">Bachelor Universitaire de Technologie (BUT) Informatique - IUT d'Aix-Marseille, site d'Arles</p>
+        <p>Parcours Réalisation d'applications : conception, développement, validation</p>
+        <p>2025 - 2028</p>
+      </div>
+      <div class="formation">
+        <p class="titre">Baccalauréat scientifique (série D), mention Assez Bien</p>
+        <p>Collège et Lycée Raponda Walker</p>
+        <p>2024 - 2025</p>
+      </div>
+    </section>
+  </main>
+
+</div>
+
+</body>
+</html>
