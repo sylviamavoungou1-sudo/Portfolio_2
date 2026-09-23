@@ -190,6 +190,7 @@ a:focus-visible {
   display: flex;
   overflow: hidden;
   background-color: var(--fond);
+  color: var(--texte); /* sinon les titres gardent la couleur du mode nuit (heritee du body) */
   transition: background-color 0.3s;
   outline: none;
 }
