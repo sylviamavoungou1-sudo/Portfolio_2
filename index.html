@@ -10,7 +10,7 @@
 <!-- apercu du lien quand on le partage (LinkedIn, Discord, etc.) -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sylvia Mavoungou Pangou - Portfolio">
-<meta property="og:description" content="Étudiante en BUT Informatique, intéressée par la modélisation 3D et la cybersécurité.">
+<meta property="og:description" content="Étudiante en BUT Informatique, intéressée par la cybersécurité.">
 
 <!-- favicon dessine en SVG directement dans la page (pas de fichier en plus) -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%235b7fff'/%3E%3Ctext x='16' y='22' font-family='Arial' font-weight='bold' font-size='18' fill='white' text-anchor='middle'%3ES%3C/text%3E%3C/svg%3E">
@@ -28,6 +28,11 @@
     if (themeSauve === 'jour' || (!themeSauve && window.matchMedia('(prefers-color-scheme: light)').matches)) {
       document.documentElement.classList.add('jour-au-demarrage');
     }
+    // couleur du site choisie par le visiteur (bleu, taupe, rose, vert ou orange)
+    var couleurSauvee = localStorage.getItem('couleur');
+    if (couleurSauvee) {
+      document.documentElement.setAttribute('data-couleur', couleurSauvee);
+    }
   } catch (e) {}
 </script>
 </head>
@@ -43,9 +48,15 @@
   <span class="icone-soleil" aria-hidden="true"></span>
 </label>
 
+<!-- bouton qui change la couleur du site (voir script.js) -->
+<button type="button" id="bouton-couleur" aria-label="Changer la couleur du site" title="Changer de couleur">
+  <span class="pastille-couleur" aria-hidden="true"></span>
+</button>
+
 <!-- barre de navigation en haut -->
 <nav id="navbar" aria-label="Navigation principale">
-  <a href="#accueil" class="brand">sylvia.</a>
+  <!-- logo : mes initiales, ramene a l'accueil -->
+  <a href="#accueil" class="brand" aria-label="Retour à l'accueil" title="Accueil">SM</a>
   <div class="nav-liens">
     <a href="#a-propos">à propos</a>
     <a href="#parcours">parcours</a>
@@ -68,11 +79,11 @@
     </div>
 
     <div class="contenu">
-      <p class="petit-titre"><span class="pastille"></span>Arles, France · en recherche de stage</p>
+      <p class="petit-titre">Arles, France · en recherche de stage</p>
       <h1>Sylvia Mavoungou Pangou</h1>
       <!-- texte ecrit comme dans un terminal (voir script.js) -->
       <p class="terminal" aria-hidden="true"><span id="texte-tape">développeuse d'applications</span><span class="curseur"></span></p>
-      <p class="sous-titre">Étudiante en 2<sup>e</sup> année de BUT Informatique, intéressée par la modélisation 3D et la cybersécurité.</p>
+      <p class="sous-titre">Étudiante en 2<sup>e</sup> année de BUT Informatique, intéressée par la cybersécurité.</p>
       <div class="liste-tags">
         <span class="tag">C++</span>
         <span class="tag">Java</span>
@@ -99,12 +110,59 @@
       <h2>À propos de moi</h2>
       <p class="sous-titre">Qui je suis</p>
 
-      <!-- pour mettre une photo : remplace la div par <img src="photo.jpg" alt="Sylvia Mavoungou Pangou" class="avatar"> -->
-      <div class="avatar" aria-hidden="true">SM</div>
+      <div class="profil">
+        <!-- carte de gauche : resume rapide -->
+        <aside class="carte carte-profil">
+          <!-- pour mettre une photo : remplace la div par <img src="photo.jpg" alt="Sylvia Mavoungou Pangou" class="avatar"> -->
+          <div class="avatar" aria-hidden="true">SM</div>
+          <h3>Sylvia Mavoungou Pangou</h3>
+          <p class="role">Étudiante en BUT Informatique</p>
+          <ul class="liste-faits">
+            <li><span class="label">Lieu</span><span class="valeur">Arles, France</span></li>
+            <li><span class="label">Formation</span><span class="valeur">BUT 2<sup>e</sup> année</span></li>
+            <li><span class="label">Stage</span><span class="valeur">dès le 29 mars 2027</span></li>
+          </ul>
+        </aside>
 
-      <p>Bonjour ! Je m'appelle <strong>Sylvia</strong>, j'ai 19 ans et je suis actuellement en deuxième année de <strong>BUT Informatique</strong> à l'IUT d'Aix-Marseille, sur le site d'Arles.</p>
-      <p>Je m'intéresse beaucoup aux nouvelles technologies, en particulier à la <strong>modélisation 3D</strong> et à la création d'environnements interactifs. Mes études me permettent de participer à de nombreux projets pour consolider mes bases.</p>
-      <p>Plus tard, je voudrais me spécialiser en <strong>cybersécurité</strong>, pour comprendre les failles des systèmes et apprendre à les protéger.</p>
+        <div class="profil-texte">
+          <p>Bonjour ! Je m'appelle <strong>Sylvia</strong>, j'ai 19 ans. Après mon bac scientifique à Port-Gentil, au Gabon, je suis venue à Arles pour suivre un <strong>BUT Informatique</strong> à l'IUT d'Aix-Marseille.</p>
+          <p>J'ai choisi l'informatique un peu par hasard, en pensant que ce serait facile. J'ai vite compris que non ! Mais en voyant les autres y arriver, je me suis dit qu'ils n'étaient <strong>pas magiciens</strong>, et que moi aussi je pouvais le faire. Depuis, j'avance projet après projet.</p>
+          <p>Aujourd'hui, je voudrais me spécialiser en <strong>cybersécurité</strong> : par curiosité, et pour savoir comment contrer les cyberattaques.</p>
+        </div>
+      </div>
+
+      <!-- informations reprises du CV -->
+      <div class="grille-infos">
+        <div class="carte carte-info">
+          <h3>Langues</h3>
+          <ul class="liste-langues">
+            <li><span>Français</span><span class="niveau">langue maternelle</span><span class="barre"><span style="width: 100%"></span></span></li>
+            <li><span>Anglais</span><span class="niveau">niveau A2</span><span class="barre"><span style="width: 35%"></span></span></li>
+          </ul>
+        </div>
+
+        <div class="carte carte-info">
+          <h3>Savoir-être</h3>
+          <div class="liste-tags">
+            <span class="tag">Autonomie</span>
+            <span class="tag">Rigueur</span>
+            <span class="tag">Travail en équipe</span>
+            <span class="tag">Gestion du temps</span>
+            <span class="tag">Adaptabilité</span>
+            <span class="tag">Sens de l'organisation</span>
+            <span class="tag">Capacité d'apprentissage</span>
+          </div>
+        </div>
+
+        <div class="carte carte-info">
+          <h3>Centres d'intérêt</h3>
+          <div class="liste-tags">
+            <span class="tag">Lecture</span>
+            <span class="tag">Randonnée</span>
+            <span class="tag">Voyages</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -114,21 +172,32 @@
       <h2>Mon parcours</h2>
       <p class="sous-titre">Formations et expériences</p>
 
-      <div class="etape">
-        <p class="date">2025 - aujourd'hui</p>
-        <div class="carte">
-          <h3>BUT Informatique - 2<sup>e</sup> année en cours</h3>
-          <p>IUT d'Aix-Marseille, site d'Arles. Parcours Réalisation d'applications : conception, développement, validation.</p>
-        </div>
-      </div>
+      <!-- frise chronologique : du plus recent au plus ancien -->
+      <ol class="frise">
+        <li class="etape a-venir">
+          <p class="date">À partir du 29 mars 2027</p>
+          <div class="carte">
+            <h3>Stage de 2<sup>e</sup> année <span class="badge">recherché</span></h3>
+            <p>Première expérience professionnelle en développement d'applications, pour mettre en pratique mes compétences sur des projets concrets.</p>
+          </div>
+        </li>
 
-      <div class="etape">
-        <p class="date">2024 - 2025</p>
-        <div class="carte">
-          <h3>Baccalauréat scientifique (série D) - mention Assez Bien</h3>
-          <p>Collège et Lycée Raponda Walker. Spécialités mathématiques, physique et SVT.</p>
-        </div>
-      </div>
+        <li class="etape en-cours">
+          <p class="date">2025 - 2028</p>
+          <div class="carte">
+            <h3>BUT Informatique <span class="badge">2<sup>e</sup> année en cours</span></h3>
+            <p>IUT d'Aix-Marseille, site d'Arles. Parcours Réalisation d'applications : conception, développement, validation.</p>
+          </div>
+        </li>
+
+        <li class="etape">
+          <p class="date">2024 - 2025</p>
+          <div class="carte">
+            <h3>Baccalauréat scientifique (série D) - mention Assez Bien</h3>
+            <p>Collège et Lycée Raponda Walker, Port-Gentil (Gabon). Spécialités mathématiques, physique et SVT.</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -141,6 +210,23 @@
       <!-- chaque projet indique les competences du BUT qu'il mobilise -->
       <div class="grille-projets">
         <article class="carte-projet">
+          <a href="images/temps_de_route_rempli.png" target="_blank" rel="noopener" class="lien-image"><img src="images/temps_de_route_rempli.png" alt="Application Temps de route : calcul du trajet Marseille - Paris" class="image-projet image-haute" loading="lazy"></a>
+          <h3>Temps de route</h3>
+          <p>Application Qt qui calcule le temps de trajet le plus court entre 100 villes françaises avec l'algorithme de Floyd-Warshall. Recherche de villes et tableau des temps entre plusieurs villes.</p>
+          <div class="liste-tags"><span class="tag">C++</span><span class="tag">Qt</span><span class="tag">Graphes</span></div>
+          <p class="competences">Compétences : Réaliser, Optimiser</p>
+        </article>
+
+        <article class="carte-projet">
+          <a href="images/recette_cuisine.png" target="_blank" rel="noopener" class="lien-image"><img src="images/recette_cuisine.png" alt="Gestionnaire de recettes : fiche de la pizza vosgienne" class="image-projet" loading="lazy"></a>
+          <h3>Gestionnaire de recettes</h3>
+          <p>Application Qt pour gérer des recettes de cuisine : recherche, filtre par catégorie, ingrédients, photo et prix par personne. Travail en équipe.</p>
+          <div class="liste-tags"><span class="tag">C++</span><span class="tag">Qt</span><span class="tag">Interface graphique</span></div>
+          <p class="competences">Compétences : Réaliser, Collaborer</p>
+        </article>
+
+        <article class="carte-projet">
+          <a href="images/projet1.png" target="_blank" rel="noopener" class="lien-image"><img src="images/projet1.png" alt="Menu principal du programme dans le terminal" class="image-projet" loading="lazy"></a>
           <h3>Bibliothèque numérique</h3>
           <p>Programme en C++ avec gestion de données (vecteurs, fichiers) et vérification des dates et des ISBN. Tests automatisés avec un script expect.</p>
           <div class="liste-tags"><span class="tag">C++</span><span class="tag">expect</span><span class="tag">Tests</span></div>
@@ -148,6 +234,7 @@
         </article>
 
         <article class="carte-projet">
+          <a href="images/apercu_tri.png" target="_blank" rel="noopener" class="lien-image"><img src="images/apercu_tri.png" alt="Graphique des temps d'exécution des algorithmes de tri" class="image-projet" loading="lazy"></a>
           <h3>Algorithmes de tri</h3>
           <p>Comparaison de plusieurs algorithmes de tri en C++, avec mesure du temps d'exécution et graphiques tracés avec SageMath. Automatisation en Bash.</p>
           <div class="liste-tags"><span class="tag">C++</span><span class="tag">SageMath</span><span class="tag">Bash</span></div>
@@ -155,6 +242,7 @@
         </article>
 
         <article class="carte-projet">
+          <a href="images/apercu_jpo.png" target="_blank" rel="noopener" class="lien-image"><img src="images/apercu_jpo.png" alt="Page d'accueil du site des journées portes ouvertes" class="image-projet" loading="lazy"></a>
           <h3>Site web pour les JPO</h3>
           <p>Site réalisé pour les journées portes ouvertes de l'IUT, avec HTML, CSS et Bootstrap. Interface claire et responsive, travail en équipe.</p>
           <div class="liste-tags"><span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">Bootstrap</span></div>
@@ -162,22 +250,23 @@
         </article>
 
         <article class="carte-projet">
+          <a href="images/apercu_polynome.png" target="_blank" rel="noopener" class="lien-image"><img src="images/apercu_polynome.png" alt="Calculatrice de polynômes dans le terminal" class="image-projet" loading="lazy"></a>
           <h3>Calculatrice de polynômes</h3>
           <p>Classe Polynome en C++ : programmation orientée objet, tableaux dynamiques, constructeur de copie, surcharge d'opérateurs.</p>
           <div class="liste-tags"><span class="tag">C++</span><span class="tag">POO</span><span class="tag">Algorithmique</span></div>
           <p class="competences">Compétences : Réaliser, Optimiser</p>
-          <a href="https://github.com/sylviamavoungou1-sudo/C_Plus_Plus" target="_blank" rel="noopener" class="lien-projet">Voir le code sur GitHub →</a>
         </article>
 
         <article class="carte-projet">
+          <a href="images/apercu_mediatheque.png" target="_blank" rel="noopener" class="lien-image"><img src="images/apercu_mediatheque.png" alt="Liste des ouvrages de la médiathèque dans le terminal" class="image-projet" loading="lazy"></a>
           <h3>Médiathèque en Java</h3>
           <p>Gestion d'une médiathèque en Java : classes Ouvrage, Livre et DVD, héritage et programmation orientée objet.</p>
           <div class="liste-tags"><span class="tag">Java</span><span class="tag">POO</span><span class="tag">Héritage</span></div>
           <p class="competences">Compétences : Réaliser</p>
-          <a href="https://github.com/sylviamavoungou1-sudo/JAVA" target="_blank" rel="noopener" class="lien-projet">Voir le code sur GitHub →</a>
         </article>
 
         <article class="carte-projet">
+          <a href="images/apercu_bdd.png" target="_blank" rel="noopener" class="lien-image"><img src="images/apercu_bdd.png" alt="Modèle conceptuel de données et requête SQL" class="image-projet" loading="lazy"></a>
           <h3>Base de données</h3>
           <p>Organisation et gestion d'une base de données dans un contexte d'entreprise : modélisation (MCD/MLD) puis requêtes SQL. Travail en équipe.</p>
           <div class="liste-tags"><span class="tag">SQL</span><span class="tag">MCD/MLD</span></div>
@@ -185,6 +274,16 @@
         </article>
 
         <article class="carte-projet">
+          <a href="images/serveur_mail.png" target="_blank" rel="noopener" class="lien-image"><img src="images/serveur_mail.png" alt="Mail reçu par un utilisateur du serveur Postfix, lu dans le terminal Debian" class="image-projet" loading="lazy"></a>
+          <h3>Serveur de messagerie</h3>
+          <p>Installation d'un serveur mail interne pour une entreprise fictive, sur une machine virtuelle Debian : Postfix, Dovecot, webmail Roundcube, puis tests avec Thunderbird. En binôme : le plus difficile a été de se coordonner, car chacune avait ses propres commandes à lancer.</p>
+          <p>Ce que j'ai retenu : le serveur refuse de relayer un mail vers l'extérieur (« Relay access denied »). C'est une protection, pour qu'on ne puisse pas s'en servir pour envoyer du spam.</p>
+          <div class="liste-tags"><span class="tag">Debian</span><span class="tag">Postfix</span><span class="tag">Dovecot</span><span class="tag">Roundcube</span></div>
+          <p class="competences">Compétences : Administrer, Collaborer</p>
+        </article>
+
+        <article class="carte-projet">
+          <a href="images/apercu_vm.png" target="_blank" rel="noopener" class="lien-image"><img src="images/apercu_vm.png" alt="Machine virtuelle Linux dans VirtualBox" class="image-projet" loading="lazy"></a>
           <h3>Poste de développement</h3>
           <p>Mise en place d'un environnement de travail avec VirtualBox : création d'une machine virtuelle, configuration des ressources, installation d'un second système (Linux).</p>
           <div class="liste-tags"><span class="tag">Linux</span><span class="tag">Bash</span><span class="tag">Système</span></div>
@@ -197,21 +296,32 @@
   <!-- page 4 : contact -->
   <section class="page" id="contact">
     <div class="contenu">
+      <p class="disponible"><span class="point-dispo" aria-hidden="true"></span>Disponible pour un stage</p>
       <h2>Contactez-moi</h2>
       <p class="sous-titre">Je recherche un <strong>stage à partir du 29 mars 2027</strong> en développement d'applications, dans le cadre de ma 2<sup>e</sup> année de BUT. N'hésitez pas à me contacter !</p>
 
       <div class="grille-contact">
-        <a href="https://github.com/sylviamavoungou1-sudo" target="_blank" rel="noopener" class="carte-contact">
-          <p class="label">GitHub</p>
-          <p class="valeur">sylviamavoungou1-sudo</p>
-        </a>
         <a href="mailto:sylviamavoungou1@gmail.com" class="carte-contact">
-          <p class="label">E-mail</p>
-          <p class="valeur">sylviamavoungou1@gmail.com</p>
+          <!-- icone enveloppe dessinee en SVG -->
+          <span class="icone-contact" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <span class="texte-contact">
+            <span class="label">E-mail</span>
+            <span class="valeur">sylviamavoungou1@gmail.com</span>
+          </span>
+          <span class="fleche" aria-hidden="true">→</span>
         </a>
         <a href="cv.pdf" class="carte-contact" download>
-          <p class="label">CV</p>
-          <p class="valeur">Télécharger (PDF)</p>
+          <!-- icone telechargement dessinee en SVG -->
+          <span class="icone-contact" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>
+          </span>
+          <span class="texte-contact">
+            <span class="label">CV</span>
+            <span class="valeur">Télécharger (PDF)</span>
+          </span>
+          <span class="fleche" aria-hidden="true">→</span>
         </a>
       </div>
 

@@ -16,6 +16,20 @@ interrupteur.addEventListener('change', function () {
   interrupteur.setAttribute('aria-label', interrupteur.checked ? 'Activer le mode nuit' : 'Activer le mode jour');
 });
 
+// ----- couleur du site : chaque clic passe a la couleur suivante -----
+// 'taupe' reprend les couleurs de mon CV : c'est la premiere proposee apres le bleu
+var couleurs = ['bleu', 'taupe', 'rose', 'vert', 'orange'];
+var boutonCouleur = document.getElementById('bouton-couleur');
+
+boutonCouleur.addEventListener('click', function () {
+  var actuelle = document.documentElement.getAttribute('data-couleur') || 'bleu';
+  var suivante = couleurs[(couleurs.indexOf(actuelle) + 1) % couleurs.length];
+  document.documentElement.setAttribute('data-couleur', suivante);
+  try {
+    localStorage.setItem('couleur', suivante);
+  } catch (e) {}
+});
+
 // ----- navigation : on change de page uniquement en cliquant sur le menu -----
 // (le glissement a la molette, au trackpad ou au doigt est desactive dans le CSS)
 var numeroCourant = 0;

@@ -9,8 +9,52 @@
   --bleu-clair: rgba(91, 127, 255, 0.15);
   --violet: #a974ff;
   --cyan: #3fd0ff;
+  --sur-accent: #ffffff; /* couleur du texte pose sur la couleur principale */
   --opacite-taches: 0.45;
   --ombre: none;
+}
+
+/* ===== autres couleurs du site (mode nuit) ===== */
+/* le bouton couleur met l'attribut data-couleur sur <html> (voir script.js). */
+/* on garde les noms --bleu, --violet et --cyan : ce sont les 3 couleurs     */
+/* d'accent, meme si elles ne sont plus bleues.                              */
+/* taupe : les couleurs de mon CV (beige rose et marron). */
+/* ici on change aussi le fond et les textes, pas seulement les accents. */
+[data-couleur="taupe"] {
+  --fond: #1a110d;
+  --carte: #281a15;
+  --bordure: #453029;
+  --texte: #f6ede7;
+  --texte-gris: #cdb7ab;
+  --bleu: #d9b8a5;
+  --bleu-clair: rgba(217, 184, 165, 0.14);
+  --violet: #b88a72;
+  --cyan: #f0dccf;
+  --sur-accent: #2a1712;
+}
+
+[data-couleur="rose"] {
+  --bleu: #ff7aa8;
+  --bleu-clair: rgba(255, 122, 168, 0.15);
+  --violet: #c98bff;
+  --cyan: #ffb86b;
+  --sur-accent: #1a0d16;
+}
+
+[data-couleur="vert"] {
+  --bleu: #3ddc97;
+  --bleu-clair: rgba(61, 220, 151, 0.14);
+  --violet: #2ec4d6;
+  --cyan: #b5e655;
+  --sur-accent: #06140f;
+}
+
+[data-couleur="orange"] {
+  --bleu: #ffa24c;
+  --bleu-clair: rgba(255, 162, 76, 0.15);
+  --violet: #ff6f7d;
+  --cyan: #ffd166;
+  --sur-accent: #1a1006;
 }
 
 /* ===== reglages de base ===== */
@@ -58,11 +102,11 @@ a:focus-visible {
 
 #bouton-theme {
   position: fixed;
-  top: 1rem;
+  top: 0.75rem; /* centre dans la barre de navigation (3.5rem de haut) */
   right: 1.5rem;
   z-index: 20;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
   background-color: var(--carte);
   border: 1px solid var(--bordure);
   border-radius: 50%;
@@ -72,6 +116,52 @@ a:focus-visible {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* bouton couleur : meme forme, juste a gauche du bouton jour / nuit. */
+/* il a besoin de JavaScript, donc on le cache si JS est desactive.   */
+#bouton-couleur {
+  display: none;
+  position: fixed;
+  top: 0.75rem;
+  right: 4.1rem;
+  z-index: 20;
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--carte);
+  border: 1px solid var(--bordure);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.js #bouton-couleur {
+  display: flex;
+}
+
+#bouton-couleur:hover,
+#bouton-theme:hover {
+  border-color: var(--bleu);
+}
+
+#bouton-couleur:focus-visible {
+  outline: 2px solid var(--bleu);
+  outline-offset: 3px;
+}
+
+/* la pastille montre les 3 couleurs du theme actuel */
+.pastille-couleur {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: conic-gradient(var(--bleu), var(--violet), var(--cyan), var(--bleu));
+  transition: transform 0.4s;
+}
+
+#bouton-couleur:hover .pastille-couleur {
+  transform: rotate(180deg);
 }
 
 /* quand la case a le focus clavier, on entoure le bouton */
@@ -128,8 +218,10 @@ a:focus-visible {
 /* aussi les nouvelles couleurs automatiquement.                            */
 /* theme jour : fond blanc casse, textes bien fonces pour rester lisibles.  */
 #interrupteur-theme:checked ~ #bouton-theme,
+#interrupteur-theme:checked ~ #bouton-couleur,
 #interrupteur-theme:checked ~ #navbar,
 #interrupteur-theme:checked ~ #conteneur {
+  --sur-accent: #ffffff;
   --fond: #f7f7f4;
   --carte: #ffffff;
   --bordure: #e3e3ea;
@@ -143,6 +235,52 @@ a:focus-visible {
   --ombre: 0 1px 2px rgba(18, 19, 28, 0.05), 0 6px 18px -8px rgba(18, 19, 28, 0.15);
 }
 
+/* les autres couleurs en mode jour : plus foncees pour rester lisibles sur fond clair */
+[data-couleur="taupe"] #interrupteur-theme:checked ~ #bouton-theme,
+[data-couleur="taupe"] #interrupteur-theme:checked ~ #bouton-couleur,
+[data-couleur="taupe"] #interrupteur-theme:checked ~ #navbar,
+[data-couleur="taupe"] #interrupteur-theme:checked ~ #conteneur {
+  --fond: #f6eee9;
+  --carte: #ffffff;
+  --bordure: #e3d3c9;
+  --texte: #3b231c;
+  --texte-gris: #6b4f45;
+  --bleu: #7a4a3a;
+  --bleu-clair: rgba(122, 74, 58, 0.08);
+  --violet: #a67c68;
+  --cyan: #c2a898;
+}
+
+[data-couleur="rose"] #interrupteur-theme:checked ~ #bouton-theme,
+[data-couleur="rose"] #interrupteur-theme:checked ~ #bouton-couleur,
+[data-couleur="rose"] #interrupteur-theme:checked ~ #navbar,
+[data-couleur="rose"] #interrupteur-theme:checked ~ #conteneur {
+  --bleu: #c2255c;
+  --bleu-clair: rgba(194, 37, 92, 0.08);
+  --violet: #862e9c;
+  --cyan: #d9480f;
+}
+
+[data-couleur="vert"] #interrupteur-theme:checked ~ #bouton-theme,
+[data-couleur="vert"] #interrupteur-theme:checked ~ #bouton-couleur,
+[data-couleur="vert"] #interrupteur-theme:checked ~ #navbar,
+[data-couleur="vert"] #interrupteur-theme:checked ~ #conteneur {
+  --bleu: #0b7a55;
+  --bleu-clair: rgba(11, 122, 85, 0.08);
+  --violet: #0e7490;
+  --cyan: #4d7c0f;
+}
+
+[data-couleur="orange"] #interrupteur-theme:checked ~ #bouton-theme,
+[data-couleur="orange"] #interrupteur-theme:checked ~ #bouton-couleur,
+[data-couleur="orange"] #interrupteur-theme:checked ~ #navbar,
+[data-couleur="orange"] #interrupteur-theme:checked ~ #conteneur {
+  --bleu: #c2410c;
+  --bleu-clair: rgba(194, 65, 12, 0.08);
+  --violet: #be123c;
+  --cyan: #a16207;
+}
+
 /* ===== barre de navigation ===== */
 #navbar {
   position: fixed;
@@ -153,16 +291,34 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 1.5rem 1rem 1.5rem;
-  padding-right: 4.5rem; /* laisse la place au bouton theme */
+  height: 3.5rem;
+  padding: 0 1.5rem;
+  padding-right: 9rem; /* laisse la place aux deux boutons ronds, avec un espace apres "contact" */
   background-color: var(--fond);
   border-bottom: 1px solid var(--bordure);
   transition: background-color 0.3s;
 }
 
+/* logo : mes initiales dans un carre arrondi en degrade */
 .brand {
-  font-weight: bold;
-  color: var(--bleu);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bleu), var(--violet));
+  color: var(--sur-accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: transform 0.2s, border-radius 0.2s;
+}
+
+/* au survol, le carre tourne un peu et devient rond */
+.brand:hover {
+  transform: rotate(-8deg) scale(1.08);
+  border-radius: 50%;
 }
 
 .nav-liens {
@@ -251,7 +407,18 @@ h1 {
 
 h2 {
   font-size: 2rem;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+
+/* petit trait en degrade sous les titres de page */
+h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 4px;
+  margin-top: 0.5rem;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--bleu), var(--violet), var(--cyan));
 }
 
 h3 {
@@ -287,7 +454,7 @@ strong {
   border-radius: 999px;
   border: 1px solid var(--bleu);
   background-color: var(--bleu);
-  color: white;
+  color: var(--sur-accent);
   font-weight: 600;
   font-size: 0.9rem;
   transition: transform 0.2s, background-color 0.2s;
@@ -343,7 +510,7 @@ strong {
   border-radius: 50%;
   object-fit: cover; /* si on remplace par une photo */
   background-color: var(--bleu);
-  color: white;
+  color: var(--sur-accent);
   font-size: 1.8rem;
   font-weight: bold;
   display: flex;
@@ -352,9 +519,247 @@ strong {
   margin-bottom: 1.5rem;
 }
 
-/* ===== parcours (timeline) ===== */
-.etape {
+/* ===== a propos ===== */
+/* sur grand ecran : la carte de profil a gauche, le texte a droite */
+.profil {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+@media (min-width: 700px) {
+  .profil {
+    grid-template-columns: 230px 1fr;
+    align-items: center;
+  }
+}
+
+.carte-profil {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* bandeau en degrade en haut de la carte */
+.carte-profil::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--bleu), var(--violet), var(--cyan));
+}
+
+.carte-profil .avatar {
+  margin: 0.5rem auto 1rem;
+  background: linear-gradient(135deg, var(--bleu), var(--violet));
+  box-shadow: 0 0 0 4px var(--carte), 0 0 0 6px var(--bleu);
+}
+
+.carte-profil h3 {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.role {
+  font-size: 0.8rem;
+  color: var(--bleu);
+}
+
+.liste-faits {
+  list-style: none;
+  text-align: left;
+  border-top: 1px solid var(--bordure);
+  padding-top: 0.8rem;
+}
+
+.liste-faits li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.8rem;
+  padding: 0.25rem 0;
+}
+
+.liste-faits .valeur {
+  font-size: 0.8rem;
+  text-align: right;
+}
+
+.liste-faits .label {
+  font-size: 0.7rem;
+}
+
+/* trait en degrade a gauche du texte de presentation */
+.profil-texte {
+  padding-left: 1.2rem;
+  border-left: 3px solid var(--bleu);
+  border-image: linear-gradient(var(--bleu), var(--violet), var(--cyan)) 1;
+}
+
+.profil-texte p:last-child {
+  margin-bottom: 0;
+}
+
+/* trois petites cartes : langues, savoir-etre, centres d'interet */
+.grille-infos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 700px) {
+  .grille-infos {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* la carte du milieu (savoir-etre) a plus de tags : elle prend toute la hauteur a droite */
+  .carte-info:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+.carte-info h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bleu);
+  margin-bottom: 0.8rem;
+}
+
+.carte-info .tag {
+  font-size: 0.75rem;
+  animation: none;
+}
+
+.liste-langues {
+  list-style: none;
+}
+
+.liste-langues li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.4rem 1rem;
+  padding: 0.5rem 0;
+  font-weight: 600;
+}
+
+/* barre de niveau sous chaque langue (la largeur est donnee dans le HTML) */
+.barre {
+  flex-basis: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background-color: var(--bleu-clair);
+  overflow: hidden;
+}
+
+.barre span {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--bleu), var(--violet));
+}
+
+.niveau {
+  color: var(--texte-gris);
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+/* ===== parcours (frise chronologique) ===== */
+.frise {
+  list-style: none;
+  position: relative;
+  padding-left: 2rem;
+}
+
+/* la ligne verticale de la frise */
+.frise::before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 8px;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(var(--cyan), var(--bleu), var(--violet), transparent);
+  transform-origin: top;
+}
+
+.etape {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+/* le point de chaque etape, pose sur la ligne */
+.etape::before {
+  content: "";
+  position: absolute;
+  left: -2rem;
+  top: 5px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--fond);
+  border: 3px solid var(--bleu);
+}
+
+/* etape en cours : point plein, avec un halo qui pulse */
+.etape.en-cours::before {
+  background-color: var(--bleu);
+  animation: pulser 2s ease-out infinite;
+}
+
+/* etape a venir : point et carte en pointilles */
+.etape.a-venir::before {
+  border-style: dashed;
+  border-color: var(--cyan);
+}
+
+.etape.a-venir .carte {
+  border-style: dashed;
+}
+
+.etape.a-venir .date {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  background-color: transparent;
+}
+
+@keyframes pulser {
+  from { box-shadow: 0 0 0 0 var(--bleu); }
+  to { box-shadow: 0 0 0 10px transparent; }
+}
+
+.badge {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.4rem;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  background-color: var(--bleu-clair);
+  color: var(--bleu);
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+/* avec JavaScript : la ligne se trace puis les etapes arrivent une par une */
+.js .page.visible .frise::before {
+  animation: tracer 1s ease backwards;
+}
+
+.js .page.visible .etape {
+  animation: apparition 0.6s ease backwards;
+}
+
+.js .page.visible .etape:nth-child(1) { animation-delay: 0.2s; }
+.js .page.visible .etape:nth-child(2) { animation-delay: 0.45s; }
+.js .page.visible .etape:nth-child(3) { animation-delay: 0.7s; }
+
+@keyframes tracer {
+  from { transform: scaleY(0); }
 }
 
 .date {
@@ -380,6 +785,7 @@ strong {
 .carte:hover {
   transform: translateY(-3px);
   border-color: var(--bleu);
+  box-shadow: 0 12px 30px -16px var(--bleu);
 }
 
 /* ===== projets ===== */
@@ -403,12 +809,53 @@ strong {
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, border-color 0.2s;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .carte-projet:hover {
   transform: translateY(-4px);
   border-color: var(--bleu);
+  box-shadow: 0 14px 34px -16px var(--bleu);
+}
+
+/* image du projet : elle occupe tout le haut de la carte (marges negatives */
+/* pour annuler le padding). On clique dessus pour la voir en grand.        */
+.lien-image {
+  display: block;
+  margin: -1.2rem -1.2rem 1rem;
+  border-radius: calc(1rem - 1px) calc(1rem - 1px) 0 0;
+  border-bottom: 1px solid var(--bordure);
+  overflow: hidden; /* l'image ne depasse pas quand elle grossit au survol */
+}
+
+.image-projet {
+  display: block;
+  width: 100%;
+  height: 12rem;
+  object-fit: cover;
+  object-position: top left;
+  transition: transform 0.4s ease;
+}
+
+.carte-projet:hover .image-projet {
+  transform: scale(1.05);
+}
+
+/* capture plus haute que large : on montre la zone du resultat */
+.image-haute {
+  object-position: 0 30%;
+}
+
+.carte-projet h3 {
+  font-size: 1.05rem;
+}
+
+.carte-projet p {
+  font-size: 0.9rem;
+}
+
+.carte-projet .liste-tags {
+  margin-bottom: 0.9rem;
 }
 
 .carte-projet .tag {
@@ -416,24 +863,38 @@ strong {
   animation: none; /* pas besoin du delai ici, il y en a deja trop sur la page */
 }
 
-.competences {
+/* les competences restent en bas de la carte, separees par un trait */
+.carte-projet .competences {
   font-size: 0.75rem;
-  margin: 0.8rem 0 0;
-}
-
-.lien-projet {
-  align-self: flex-start;
-  margin-top: 0.6rem;
-  font-size: 0.85rem;
-  font-weight: 600;
+  margin: auto 0 0;
+  padding-top: 0.7rem;
+  border-top: 1px dashed var(--bordure);
   color: var(--bleu);
 }
 
-.lien-projet:hover {
-  text-decoration: underline;
+/* ===== contact ===== */
+/* pastille "disponible" avec un point qui pulse */
+.disponible {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.8rem;
+  border: 1px solid var(--bordure);
+  border-radius: 999px;
+  background-color: var(--carte);
+  color: var(--texte);
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 
-/* ===== contact ===== */
+.point-dispo {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--bleu); /* prend la couleur du theme choisi */
+  animation: pulser 2s ease-out infinite; /* meme halo que sur la frise */
+}
+
 .grille-contact {
   display: grid;
   grid-template-columns: 1fr;
@@ -441,7 +902,7 @@ strong {
   margin-bottom: 2rem;
 }
 
-@media (min-width: 560px) {
+@media (min-width: 640px) {
   .grille-contact {
     grid-template-columns: 1fr 1fr;
   }
@@ -452,15 +913,54 @@ strong {
   box-shadow: var(--ombre);
   border: 1px solid var(--bordure);
   border-radius: 1rem;
-  padding: 1.2rem;
-  display: block;
-  overflow-wrap: anywhere; /* l'adresse mail ne deborde pas sur petit ecran */
-  transition: transform 0.2s, border-color 0.2s;
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
 
 .carte-contact:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-3px);
   border-color: var(--bleu);
+  box-shadow: 0 12px 30px -16px var(--bleu);
+}
+
+/* rond colore avec l'icone */
+.icone-contact {
+  flex: 0 0 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--sur-accent);
+  background: linear-gradient(135deg, var(--bleu), var(--violet));
+}
+
+.texte-contact {
+  min-width: 0;
+  overflow-wrap: anywhere; /* l'adresse mail ne deborde pas sur petit ecran */
+}
+
+.texte-contact .label,
+.texte-contact .valeur {
+  display: block;
+}
+
+.texte-contact .valeur {
+  font-size: 0.9rem;
+}
+
+/* la fleche avance un peu au survol */
+.fleche {
+  margin-left: auto;
+  color: var(--bleu);
+  transition: transform 0.2s;
+}
+
+.carte-contact:hover .fleche {
+  transform: translateX(4px);
 }
 
 .label {
@@ -476,6 +976,8 @@ strong {
 
 .pied {
   font-size: 0.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bordure);
 }
 
 /* ===== petits ecrans ===== */
@@ -483,10 +985,13 @@ strong {
 @media (max-width: 640px) {
   #navbar {
     padding-left: 1rem;
-    padding-right: 4rem;
+    padding-right: 5.6rem;
   }
   #bouton-theme {
-    right: 1rem;
+    right: 0.8rem;
+  }
+  #bouton-couleur {
+    right: 3.1rem;
   }
   .nav-liens {
     gap: 0.8rem;
@@ -589,24 +1094,6 @@ strong {
   50% { opacity: 0.22; }
 }
 
-/* petit point vert qui clignote : "disponible" */
-.pastille {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  margin-right: 0.6rem;
-  border-radius: 50%;
-  background: #3ddc84;
-  vertical-align: middle;
-  box-shadow: 0 0 0 0 rgba(61, 220, 132, 0.6);
-  animation: pulsation 2s infinite;
-}
-
-@keyframes pulsation {
-  70% { box-shadow: 0 0 0 8px rgba(61, 220, 132, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(61, 220, 132, 0); }
-}
-
 /* nom en degrade de couleurs qui glisse */
 #accueil h1 {
   font-size: clamp(2rem, 6vw, 3.4rem);
@@ -654,7 +1141,7 @@ strong {
 #accueil .tag:hover {
   transform: translateY(-3px);
   background-color: var(--bleu);
-  color: white;
+  color: var(--sur-accent);
 }
 
 /* reflet lumineux qui traverse le bouton principal au survol */
