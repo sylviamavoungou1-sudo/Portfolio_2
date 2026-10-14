@@ -870,6 +870,21 @@ strong {
   padding-top: 0.7rem;
   border-top: 1px dashed var(--bordure);
   color: var(--bleu);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.3rem 1rem;
+}
+
+/* lien vers le depot GitHub du projet */
+.lien-code {
+  font-weight: 600;
+  color: var(--bleu);
+  white-space: nowrap;
+}
+
+.lien-code:hover {
+  text-decoration: underline;
 }
 
 /* ===== contact ===== */

@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sylvia Mavoungou Pangou - Portfolio</title>
-<meta name="description" content="Portfolio de Sylvia Mavoungou Pangou, étudiante en BUT Informatique à l'IUT d'Aix-Marseille (Arles) : projets en C++, Java, Qt, web et bases de données.">
-<meta name="author" content="Sylvia Mavoungou Pangou">
+<title>MAVOUNGOU Sylvia - Portfolio</title>
+<meta name="description" content="Portfolio de MAVOUNGOU Sylvia, étudiante en BUT Informatique à l'IUT d'Aix-Marseille (Arles) : projets en C++, Java, Qt, web et bases de données.">
+<meta name="author" content="MAVOUNGOU Sylvia">
 
 <!-- apercu du lien quand on le partage (LinkedIn, Discord, etc.) -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Sylvia Mavoungou Pangou - Portfolio">
+<meta property="og:title" content="MAVOUNGOU Sylvia - Portfolio">
 <meta property="og:description" content="Étudiante en BUT Informatique, intéressée par la cybersécurité.">
 
 <!-- favicon dessine en SVG directement dans la page (pas de fichier en plus) -->
@@ -80,7 +80,7 @@
 
     <div class="contenu">
       <p class="petit-titre">Arles, France · en recherche de stage</p>
-      <h1>Sylvia Mavoungou Pangou</h1>
+      <h1>MAVOUNGOU Sylvia</h1>
       <!-- texte ecrit comme dans un terminal (voir script.js) -->
       <p class="terminal" aria-hidden="true"><span id="texte-tape">développeuse d'applications</span><span class="curseur"></span></p>
       <p class="sous-titre">Étudiante en 2<sup>e</sup> année de BUT Informatique, intéressée par la cybersécurité.</p>
@@ -99,7 +99,7 @@
       </div>
       <div class="boutons">
         <a href="#projets" class="bouton">Voir mes projets</a>
-        <a href="cv.pdf" class="bouton bouton-secondaire" download>Télécharger mon CV</a>
+        <a href="cv.pdf" class="bouton bouton-secondaire" target="_blank" rel="noopener">Voir mon CV</a>
       </div>
     </div>
   </section>
@@ -113,9 +113,9 @@
       <div class="profil">
         <!-- carte de gauche : resume rapide -->
         <aside class="carte carte-profil">
-          <!-- pour mettre une photo : remplace la div par <img src="photo.jpg" alt="Sylvia Mavoungou Pangou" class="avatar"> -->
+          <!-- pour mettre une photo : remplace la div par <img src="photo.jpg" alt="MAVOUNGOU Sylvia" class="avatar"> -->
           <div class="avatar" aria-hidden="true">SM</div>
-          <h3>Sylvia Mavoungou Pangou</h3>
+          <h3>MAVOUNGOU Sylvia</h3>
           <p class="role">Étudiante en BUT Informatique</p>
           <ul class="liste-faits">
             <li><span class="label">Lieu</span><span class="valeur">Arles, France</span></li>
@@ -125,9 +125,9 @@
         </aside>
 
         <div class="profil-texte">
-          <p>Bonjour ! Je m'appelle <strong>Sylvia</strong>, j'ai 19 ans. Après mon bac scientifique à Port-Gentil, au Gabon, je suis venue à Arles pour suivre un <strong>BUT Informatique</strong> à l'IUT d'Aix-Marseille.</p>
-          <p>J'ai choisi l'informatique un peu par hasard, en pensant que ce serait facile. J'ai vite compris que non ! Mais en voyant les autres y arriver, je me suis dit qu'ils n'étaient <strong>pas magiciens</strong>, et que moi aussi je pouvais le faire. Depuis, j'avance projet après projet.</p>
-          <p>Aujourd'hui, je voudrais me spécialiser en <strong>cybersécurité</strong> : par curiosité, et pour savoir comment contrer les cyberattaques.</p>
+          <p>Bonjour ! Je m'appelle <strong>Sylvia</strong>. Après mon bac scientifique à Port-Gentil, au Gabon, je suis venue à Arles pour suivre un <strong>BUT Informatique</strong> à l'IUT d'Aix-Marseille.</p>
+          <p>Au début, l'informatique m'a demandé beaucoup d'efforts. Mais en voyant les autres y arriver, je me suis dit qu'ils n'étaient <strong>pas magiciens</strong>, et que moi aussi je pouvais le faire. Depuis, j'avance projet après projet.</p>
+          <p>Aujourd'hui, je me forme au <strong>développement d'applications</strong>. Plus tard, j'aimerais me spécialiser en <strong>cybersécurité</strong> : par curiosité, et pour savoir comment contrer les cyberattaques. Mon premier contact concret a été l'installation d'un serveur de messagerie : j'y ai vu qu'un serveur bien configuré refuse de relayer les mails vers l'extérieur, pour ne pas servir à envoyer du spam. C'est ce genre de protection que j'ai envie de comprendre et de mettre en place.</p>
         </div>
       </div>
 
@@ -212,7 +212,7 @@
         <article class="carte-projet">
           <a href="images/temps_de_route_rempli.png" target="_blank" rel="noopener" class="lien-image"><img src="images/temps_de_route_rempli.png" alt="Application Temps de route : calcul du trajet Marseille - Paris" class="image-projet image-haute" loading="lazy"></a>
           <h3>Temps de route</h3>
-          <p>Application Qt qui calcule le temps de trajet le plus court entre 100 villes françaises avec l'algorithme de Floyd-Warshall. Recherche de villes et tableau des temps entre plusieurs villes.</p>
+          <p>Application Qt qui calcule le temps de trajet le plus court entre 100 villes françaises avec l'algorithme de Floyd-Warshall. Recherche de villes et tableau des temps entre plusieurs villes. Projet réalisé seule, de l'algorithme à l'interface.</p>
           <div class="liste-tags"><span class="tag">C++</span><span class="tag">Qt</span><span class="tag">Graphes</span></div>
           <p class="competences">Compétences : Réaliser, Optimiser</p>
         </article>
@@ -221,6 +221,7 @@
           <a href="images/recette_cuisine.png" target="_blank" rel="noopener" class="lien-image"><img src="images/recette_cuisine.png" alt="Gestionnaire de recettes : fiche de la pizza vosgienne" class="image-projet" loading="lazy"></a>
           <h3>Gestionnaire de recettes</h3>
           <p>Application Qt pour gérer des recettes de cuisine : recherche, filtre par catégorie, ingrédients, photo et prix par personne. Travail en équipe.</p>
+          <p>Ma part : les classes qui stockent les recettes, la lecture et l'écriture des fichiers JSON, et la fenêtre principale (menus, ouverture de fichiers, filtre par catégorie). Le plus difficile : fusionner mon code avec celui de ma binôme sans rien casser.</p>
           <div class="liste-tags"><span class="tag">C++</span><span class="tag">Qt</span><span class="tag">Interface graphique</span></div>
           <p class="competences">Compétences : Réaliser, Collaborer</p>
         </article>
@@ -254,7 +255,7 @@
           <h3>Calculatrice de polynômes</h3>
           <p>Classe Polynome en C++ : programmation orientée objet, tableaux dynamiques, constructeur de copie, surcharge d'opérateurs.</p>
           <div class="liste-tags"><span class="tag">C++</span><span class="tag">POO</span><span class="tag">Algorithmique</span></div>
-          <p class="competences">Compétences : Réaliser, Optimiser</p>
+          <p class="competences"><span>Compétences : Réaliser, Optimiser</span><a href="https://github.com/sylviamavoungou1-sudo/C_Plus_Plus" class="lien-code" target="_blank" rel="noopener">Voir le code <span aria-hidden="true">→</span></a></p>
         </article>
 
         <article class="carte-projet">
@@ -262,7 +263,7 @@
           <h3>Médiathèque en Java</h3>
           <p>Gestion d'une médiathèque en Java : classes Ouvrage, Livre et DVD, héritage et programmation orientée objet.</p>
           <div class="liste-tags"><span class="tag">Java</span><span class="tag">POO</span><span class="tag">Héritage</span></div>
-          <p class="competences">Compétences : Réaliser</p>
+          <p class="competences"><span>Compétences : Réaliser</span><a href="https://github.com/sylviamavoungou1-sudo/JAVA/tree/HEAD/Java/Tp3" class="lien-code" target="_blank" rel="noopener">Voir le code <span aria-hidden="true">→</span></a></p>
         </article>
 
         <article class="carte-projet">
@@ -280,14 +281,6 @@
           <p>Ce que j'ai retenu : le serveur refuse de relayer un mail vers l'extérieur (« Relay access denied »). C'est une protection, pour qu'on ne puisse pas s'en servir pour envoyer du spam.</p>
           <div class="liste-tags"><span class="tag">Debian</span><span class="tag">Postfix</span><span class="tag">Dovecot</span><span class="tag">Roundcube</span></div>
           <p class="competences">Compétences : Administrer, Collaborer</p>
-        </article>
-
-        <article class="carte-projet">
-          <a href="images/apercu_vm.png" target="_blank" rel="noopener" class="lien-image"><img src="images/apercu_vm.png" alt="Machine virtuelle Linux dans VirtualBox" class="image-projet" loading="lazy"></a>
-          <h3>Poste de développement</h3>
-          <p>Mise en place d'un environnement de travail avec VirtualBox : création d'une machine virtuelle, configuration des ressources, installation d'un second système (Linux).</p>
-          <div class="liste-tags"><span class="tag">Linux</span><span class="tag">Bash</span><span class="tag">Système</span></div>
-          <p class="competences">Compétences : Administrer</p>
         </article>
       </div>
     </div>
@@ -312,20 +305,32 @@
           </span>
           <span class="fleche" aria-hidden="true">→</span>
         </a>
-        <a href="cv.pdf" class="carte-contact" download>
-          <!-- icone telechargement dessinee en SVG -->
+        <!-- le CV s'ouvre dans un nouvel onglet : on peut le lire sans le telecharger -->
+        <a href="cv.pdf" class="carte-contact" target="_blank" rel="noopener">
+          <!-- icone document dessinee en SVG -->
           <span class="icone-contact" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 11 5 5 5-5"/><path d="M5 20h14"/></svg>
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/></svg>
           </span>
           <span class="texte-contact">
             <span class="label">CV</span>
-            <span class="valeur">Télécharger (PDF)</span>
+            <span class="valeur">Voir mon CV (PDF)</span>
+          </span>
+          <span class="fleche" aria-hidden="true">→</span>
+        </a>
+        <a href="https://github.com/sylviamavoungou1-sudo" class="carte-contact" target="_blank" rel="noopener">
+          <!-- icone code dessinee en SVG -->
+          <span class="icone-contact" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 7-5 5 5 5"/><path d="m16 7 5 5-5 5"/></svg>
+          </span>
+          <span class="texte-contact">
+            <span class="label">GitHub</span>
+            <span class="valeur">sylviamavoungou1-sudo</span>
           </span>
           <span class="fleche" aria-hidden="true">→</span>
         </a>
       </div>
 
-      <p class="pied">&copy; 2026 MAVOUNGOU PANGOU Sylvia</p>
+      <p class="pied">&copy; 2026 MAVOUNGOU Sylvia</p>
     </div>
   </section>
 
